@@ -2,6 +2,8 @@
 
 [Grunt][grunt] task to diff file sizes between current git branch and a branch/commit
 
+![screenshot](https://raw.github.com/sindresorhus/grunt-sizediff/master/screenshot.png)
+
 
 ## Getting Started
 
@@ -28,8 +30,8 @@ You can specify two files to diff and an optional target.
 sizediff: {
 	dist: {
 		files: [
-			'test.js',
-			'test.min.js'
+			'file.js',
+			'file.min.js'
 		]
 	}
 }
@@ -44,8 +46,8 @@ It falls back to `master` if `target` is not specified.
 sizediff: {
 	dist: {
 		files: [
-			'test.js',
-			'test.min.js'
+			'file.js',
+			'file.min.js'
 		],
 		target: 'future' // branch
 	}
@@ -53,23 +55,24 @@ sizediff: {
 ```
 
 
-#### Diff against branch
+#### Diff against commit
 
 ```javascript
 sizediff: {
 	dist: {
 		files: [
-			'test.js',
-			'test.min.js'
+			'file.js',
+			'file.min.js'
 		],
 		target: 'fd9b092' // commit
 	}
 }
+```
 
 
 ## Tests
 
-Grunt currently doesn't have a way to test tasks directly. You can test this task by running `grunt` and manually check that it works.
+Grunt currently doesn't have a way to test tasks directly. You can test this task by running `grunt` and manually verify that it works.
 
 
 ## Contribute
