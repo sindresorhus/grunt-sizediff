@@ -17,7 +17,8 @@ module.exports = function( grunt ) {
 				files: [
 					'test/fixtures/test.js',
 					'test/fixtures/test.min.js'
-				]
+				],
+				target: 'a356cb4'
 			}
 		},
 		jshint: {
