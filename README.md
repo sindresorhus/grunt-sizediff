@@ -1,6 +1,6 @@
 # grunt-sizediff
 
-[Grunt][grunt] task to diff file sizes between current git branch and a branch/commit
+[Grunt][grunt] task to diff file sizes between current git branch and a branch/commit. It helps you keep an eye on your project size changes.
 
 ![screenshot](https://raw.github.com/sindresorhus/grunt-sizediff/master/screenshot.png)
 
