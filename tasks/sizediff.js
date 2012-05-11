@@ -19,10 +19,10 @@ module.exports = function( grunt ) {
 	var async = grunt.utils.async;
 	var _ = grunt.utils._;
 
-	grunt.registerMultiTask('sizediff', 'Diff file sizes between current git branch and a branch/commit', function() {
+	grunt.registerMultiTask('sizediff', 'Diff file sizes between current git branch and a branch/commit', function( targetOverride ) {
 		var done = this.async();
 		var files = grunt.file.expandFiles( this.data.files );
-		var target = this.data.target || 'master';
+		var target = targetOverride || this.data.target || 'master';
 
 		function getSizes( item, cb ) {
 			grunt.utils.spawn({

@@ -69,6 +69,10 @@ sizediff: {
 }
 ```
 
+#### Override target
+
+You can override the diff target of a task by running `grunt sizediff:dist:target`, where `dist` is the task you want to override and `target` is the branch or commit.
+
 
 ## Tests
 
