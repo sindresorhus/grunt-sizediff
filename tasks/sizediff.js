@@ -66,6 +66,10 @@ module.exports = function( grunt ) {
 				var diff = current - target;
 				var color = diff < 0 ? 'green' : diff > 0 ? 'red' : 'grey';
 
+				if ( diff > 0 ) {
+					diff = '+' + diff;
+				}
+
 				log.writetableln([ 12, 12, 55 ], [
 					_.lpad( current += '', 10 ),
 					_.lpad( diff ? '(' + diff + ')' : '(-)', 10 )[ color ],
