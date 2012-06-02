@@ -18,6 +18,8 @@ grunt.loadNpmTasks('grunt-sizediff');
 
 ## Documentation
 
+This grunt task is a [multi task](https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91), which means you can specify multiple subtasks and grunt will iterate over them. The `dist` below is a subtask, you could e.g. create a `dev` subtask to handle stuff while developing.
+
 You can specify two files to diff and an optional target.
 
 
