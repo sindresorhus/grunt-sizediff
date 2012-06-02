@@ -2,6 +2,15 @@ module.exports = function( grunt ) {
 	'use strict';
 
 	grunt.initConfig({
+		sizediff: {
+			dist: {
+				files: [
+					'test/fixtures/test.js',
+					'test/fixtures/test.min.js'
+				],
+				target: 'a356cb4'
+			}
+		},
 		lint: {
 			files: [
 				'grunt.js',
@@ -11,15 +20,6 @@ module.exports = function( grunt ) {
 		watch: {
 			files: '<config:lint.files>',
 			tasks: 'default'
-		},
-		sizediff: {
-			dist: {
-				files: [
-					'test/fixtures/test.js',
-					'test/fixtures/test.min.js'
-				],
-				target: 'a356cb4'
-			}
 		},
 		jshint: {
 			options: {
@@ -44,6 +44,6 @@ module.exports = function( grunt ) {
 
 	grunt.loadTasks('tasks');
 
-	grunt.registerTask('default', 'lint sizediff');
+	grunt.registerTask( 'default', 'lint sizediff' );
 
 };
