@@ -1,4 +1,10 @@
-test/
+.npmignore
+.editorconfig
+.jshintrc
+.jshintignore
+.gitattributes
+*.sublime-project
+*.sublime-workspace
+test
 grunt.js
-README.md
 screenshot.png
