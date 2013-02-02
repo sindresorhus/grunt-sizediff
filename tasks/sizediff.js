@@ -68,7 +68,7 @@ module.exports = function (grunt) {
 					diff = '+' + filesize(diff, true);
 				} else if (diff < 0) {
 					color = 'green';
-					diff = '-' + filesize(Math.abs(diff), true);
+					diff = filesize(diff, true);
 				}
 
 				grunt.log.writetableln([12, 12, 55], [
