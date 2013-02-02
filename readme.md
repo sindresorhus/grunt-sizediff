@@ -2,23 +2,24 @@
 
 [Grunt][grunt] task to diff file sizes between current git branch and a branch/commit. It helps you keep an eye on your project size changes.
 
-![screenshot](https://raw.github.com/sindresorhus/grunt-sizediff/master/screenshot.png)
+![screenshot](screenshot.png)
+
+*Requires grunt 0.4. Use version 0.2.1 for grunt 0.3 compatibility*
 
 
 ## Getting Started
 
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-sizediff`
+If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
-Then add this line to your project's `grunt.js` gruntfile:
-
-```javascript
-grunt.loadNpmTasks('grunt-sizediff');
+```shell
+npm install grunt-sizediff --save-dev
 ```
+
+[grunt]: http://gruntjs.com
+[Getting Started]: https://github.com/gruntjs/grunt/wiki/Getting-started
 
 
 ## Documentation
-
-This grunt task is a [multi task](https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91), which means you can specify multiple subtasks and grunt will iterate over them. The `dist` below is a subtask, you could e.g. create a `dev` subtask to handle stuff while developing.
 
 You can specify two files to diff and an optional target.
 
@@ -33,7 +34,7 @@ sizediff: {
 	dist: {
 		files: [
 			'file.js',
-			'file.min.js'
+			'file.min.js' // optional
 		]
 	}
 }
@@ -47,11 +48,13 @@ It falls back to `master` if `target` is not specified.
 ```javascript
 sizediff: {
 	dist: {
+		options: {
+			target: 'future' // branch
+		},
 		files: [
 			'file.js',
 			'file.min.js'
-		],
-		target: 'future' // branch
+		]
 	}
 }
 ```
@@ -62,18 +65,20 @@ sizediff: {
 ```javascript
 sizediff: {
 	dist: {
+		options: {
+			target: 'fd9b092' // commit
+		},
 		files: [
 			'file.js',
 			'file.min.js'
-		],
-		target: 'fd9b092' // commit
+		]
 	}
 }
 ```
 
 #### Override target
 
-You can temporarily override the diff target of a task by running `grunt sizediff:dist:target`, where `dist` is the task you want to override and `target` is the branch or commit.
+You can temporarily override the diff target of a task by running `grunt sizediff:dist:target`, where `dist` is the task target you want to override and `target` is the branch or commit.
 
 
 ## Tests
@@ -90,7 +95,3 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 MIT License
 (c) [Sindre Sorhus](http://sindresorhus.com)
-
-
-[grunt]: https://github.com/cowboy/grunt
-[getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md

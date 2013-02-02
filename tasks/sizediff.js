@@ -1,83 +1,84 @@
-/*
- * grunt-sizediff
- * 0.2.0 - 2012-05-11
- * github.com/sindresorhus/grunt-sizediff
- *
- * (c) Sindre Sorhus
- * sindresorhus.com
- * MIT License
- */
-module.exports = function( grunt ) {
-	'use strict';
+'use strict';
+module.exports = function (grunt) {
+	var path = require('path');
+	var gzipjs = require('gzip-js');
+	var filesize = require('filesize');
+	var _ = grunt.util._;
 
-	function gzip( item ) {
-		return grunt.helper( 'gzip', item );
-	}
+	grunt.registerMultiTask('sizediff', 'Diff file sizes between current git branch and a branch/commit', function (targetOverride) {
+		var cb = this.async();
+		var files = this.filesSrc;
+		var target = targetOverride || this.options({target: 'master'}).target;
+		var parallelFns = [
+			function (cb) {
+				getSizes(files[0], cb);
+			}
+		];
 
-	var log = grunt.log;
-	var file = grunt.file;
-	var async = grunt.utils.async;
-	var _ = grunt.utils._;
-
-	grunt.registerMultiTask('sizediff', 'Diff file sizes between current git branch and a branch/commit', function( targetOverride ) {
-		var done = this.async();
-		var files = grunt.file.expandFiles( this.data.files );
-		var target = targetOverride || this.data.target || 'master';
-
-		function getSizes( item, cb ) {
-			grunt.utils.spawn({
+		function getSizes(el, cb) {
+			grunt.util.spawn({
 				cmd: 'git',
-				args: [ 'show', target + ':./' + item ]
-			}, function( err, result ) {
-				cb( err, {
-					filename: item,
-					current: file.read( item ),
+				args: ['show', target + ':./' + el]
+			}, function (err, result) {
+				cb(err, {
+					path: path.dirname(el),
+					filename: path.basename(el),
+					current: grunt.file.read(el),
 					target: result.stdout
 				});
 			});
 		}
 
-		async.parallel([
-			function( cb ) {
-				getSizes( files[0], cb );
-			},
-			function( cb ) {
-				getSizes( files[1], cb );
-			}
-		], function( err, results ) {
-			var min = results[1];
+		// handle optional second file
+		if (files.length > 1) {
+			parallelFns.push(
+				function (cb) {
+					getSizes(files[1], cb);
+				}
+			);
+		}
 
-			if ( err ) {
-				grunt.fatal( err );
+		grunt.util.async.parallel(parallelFns, function (err, results) {
+			// use second file if defined, otherwise the first
+			var min = results[1] || results[0];
+
+			if (err) {
+				grunt.warn(err);
 			}
 
-			// Add gzip version to the collection
+			console.log('\nPath %s', results[0].path.cyan);
+
+			// add gzip version to the collection
 			results.push({
 				filename: min.filename + '.gz',
-				current: gzip( min.current ),
-				target: gzip( min.target )
+				current: gzipjs.zip(min.current, {}),
+				target: gzipjs.zip(min.target, {})
 			});
 
-			log.writeln( '\nSize diff between current branch and ' + target.bold );
+			grunt.log.writeln('\nSize diff between current branch and ' + target.bold);
 
-			results.forEach(function( item ) {
+			results.forEach(function (item) {
 				var current = item.current.length;
 				var target = item.target.length;
 				var diff = current - target;
-				var color = diff < 0 ? 'green' : diff > 0 ? 'red' : 'grey';
+				var color = 'grey';
 
-				if ( diff > 0 ) {
-					diff = '+' + diff;
+				if (diff > 0) {
+					color = 'red';
+					diff = '+' + filesize(diff, true);
+				} else if (diff < 0) {
+					color = 'green';
+					diff = '-' + filesize(Math.abs(diff), true);
 				}
 
-				log.writetableln([ 12, 12, 55 ], [
-					_.lpad( current += '', 10 ),
-					_.lpad( diff ? '(' + diff + ')' : '(-)', 10 )[ color ],
+				grunt.log.writetableln([12, 12, 55], [
+					_.lpad(filesize(current, true), 10),
+					_.lpad(diff ? '(' + diff + ')' : '(-)', 10 )[color],
 					item.filename
 				]);
 			});
 
-			done();
+			cb();
 		});
 	});
 };

@@ -1,36 +1,39 @@
 {
-	"name": "grunt-sizediff",
-	"version": "0.2.1",
-	"description": "Grunt task to diff file sizes between current git branch and a branch/commit",
-	"keywords": [
-		"gruntplugin",
-		"grunt",
-		"size",
-		"diff",
-		"difference",
-		"git",
-		"dvcs"
-	],
-	"homepage": "https://github.com/sindresorhus/grunt-sizediff",
-	"bugs": "https://github.com/sindresorhus/grunt-sizediff/issues",
-	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "http://sindresorhus.com"
-	},
-	"main": "grunt.js",
-	"bin": "bin/grunt-sizediff",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/sindresorhus/grunt-sizediff.git"
-	},
-	"devDependencies": {
-		"grunt": "~0.3.12"
-	},
-	"engines": {
-		"node": ">=0.8.0"
-	},
-	"licenses": {
-		"type": "MIT"
-	}
+  "name": "grunt-sizediff",
+  "version": "0.2.1",
+  "description": "Diff file sizes between current git branch and a branch/commit",
+  "keywords": [
+    "gruntplugin",
+    "grunt",
+    "size",
+    "diff",
+    "difference",
+    "git",
+    "dvcs"
+  ],
+  "homepage": "https://github.com/sindresorhus/grunt-sizediff",
+  "bugs": "https://github.com/sindresorhus/grunt-sizediff/issues",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sindresorhus/grunt-sizediff.git"
+  },
+  "dependencies": {
+    "grunt-lib-contrib": "~0.5.2",
+    "gzip-js": "~0.3.1",
+    "filesize": "~1.7.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": {
+    "type": "MIT"
+  }
 }
