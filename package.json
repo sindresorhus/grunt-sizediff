@@ -1,6 +1,6 @@
 {
   "name": "grunt-sizediff",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Diff file sizes between current git branch and a branch/commit",
   "keywords": [
     "gruntplugin",
