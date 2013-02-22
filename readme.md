@@ -32,7 +32,7 @@ You can specify two files to diff and an optional target.
 ```javascript
 sizediff: {
 	dist: {
-		files: [
+		src: [
 			'file.js',
 			'file.min.js' // optional
 		]
@@ -51,7 +51,7 @@ sizediff: {
 		options: {
 			target: 'future' // branch
 		},
-		files: [
+		src: [
 			'file.js',
 			'file.min.js'
 		]
@@ -68,7 +68,7 @@ sizediff: {
 		options: {
 			target: 'fd9b092' // commit
 		},
-		files: [
+		src: [
 			'file.js',
 			'file.min.js'
 		]

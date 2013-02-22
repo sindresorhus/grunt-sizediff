@@ -4,7 +4,6 @@
   "description": "Diff file sizes between current git branch and a branch/commit",
   "keywords": [
     "gruntplugin",
-    "grunt",
     "size",
     "diff",
     "difference",
@@ -25,9 +24,12 @@
   "dependencies": {
     "grunt-lib-contrib": "~0.5.2",
     "gzip-js": "~0.3.1",
-    "filesize": "~1.7.3"
+    "filesize": "~1.7.9"
   },
   "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "peerDependencies": {
     "grunt": "~0.4.0"
   },
   "engines": {
