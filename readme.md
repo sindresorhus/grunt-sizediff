@@ -1,10 +1,9 @@
 # grunt-sizediff
 
-[Grunt][grunt] task to diff file sizes between current git branch and a branch/commit. It helps you keep an eye on your project size changes.
+> [Grunt][grunt] task to diff file sizes between current git branch and a branch/commit.  
+> It helps you keep an eye on your project size changes.
 
 ![screenshot](screenshot.png)
-
-*Requires grunt 0.4. Use version 0.2.1 for grunt 0.3 compatibility*
 
 
 ## Getting Started
@@ -14,6 +13,15 @@ If you haven't used [grunt][] before, be sure to check out the [Getting Started]
 ```shell
 npm install grunt-sizediff --save-dev
 ```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-sizediff');
+```
+
+*Tip: the [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks) module makes it easier to load multiple grunt tasks.*
+
 
 [grunt]: http://gruntjs.com
 [Getting Started]: https://github.com/gruntjs/grunt/wiki/Getting-started
@@ -86,12 +94,6 @@ You can temporarily override the diff target of a task by running `grunt sizedif
 Grunt currently doesn't have a way to test tasks directly. You can test this task by running `grunt` and manually verify that it works.
 
 
-## Contribute
-
-In lieu of a formal styleguide, take care to maintain the existing coding style.
-
-
 ## License
 
-MIT License
-(c) [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
