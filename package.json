@@ -22,9 +22,11 @@
     "url": "git://github.com/sindresorhus/grunt-sizediff.git"
   },
   "dependencies": {
-    "grunt-lib-contrib": "~0.5.2",
     "gzip-js": "~0.3.1",
-    "filesize": "~1.7.9"
+    "filesize": "~2.0.0",
+    "async": "~0.2.9",
+    "underscore.string": "~2.3.3",
+    "chalk": "~0.3.0"
   },
   "devDependencies": {
     "grunt": "~0.4.0"

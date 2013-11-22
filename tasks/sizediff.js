@@ -1,10 +1,12 @@
 'use strict';
-module.exports = function (grunt) {
-	var path = require('path');
-	var gzipjs = require('gzip-js');
-	var filesize = require('filesize');
-	var _ = grunt.util._;
+var path = require('path');
+var gzipjs = require('gzip-js');
+var filesize = require('filesize');
+var async = require('async');
+var _s = require('underscore.string');
+var chalk = require('chalk');
 
+module.exports = function (grunt) {
 	grunt.registerMultiTask('sizediff', 'Diff file sizes between current git branch and a branch/commit', function (targetOverride) {
 		var cb = this.async();
 		var files = this.filesSrc;
@@ -38,7 +40,7 @@ module.exports = function (grunt) {
 			);
 		}
 
-		grunt.util.async.parallel(parallelFns, function (err, results) {
+		async.parallel(parallelFns, function (err, results) {
 			// use second file if defined, otherwise the first
 			var min = results[1] || results[0];
 
@@ -61,7 +63,7 @@ module.exports = function (grunt) {
 				var current = item.current.length;
 				var target = item.target.length;
 				var diff = current - target;
-				var color = 'grey';
+				var color = 'gray';
 
 				if (diff > 0) {
 					color = 'red';
@@ -72,8 +74,8 @@ module.exports = function (grunt) {
 				}
 
 				grunt.log.writetableln([12, 12, 55], [
-					_.lpad(filesize(current, true), 10),
-					_.lpad(diff ? '(' + diff + ')' : '(-)', 10 )[color],
+					_s.lpad(filesize(current, true), 10),
+					_s.lpad(chalk[color](diff ? '(' + diff + ')' : '(-)'), 10),
 					item.filename
 				]);
 			});
