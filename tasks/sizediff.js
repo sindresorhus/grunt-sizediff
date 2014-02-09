@@ -1,7 +1,7 @@
 'use strict';
 var path = require('path');
 var gzipjs = require('gzip-js');
-var filesize = require('filesize');
+var prettyBytes = require('pretty-bytes');
 var async = require('async');
 var _s = require('underscore.string');
 var chalk = require('chalk');
@@ -67,14 +67,14 @@ module.exports = function (grunt) {
 
 				if (diff > 0) {
 					color = 'red';
-					diff = '+' + filesize(diff, true);
+					diff = '+' + prettyBytes(diff);
 				} else if (diff < 0) {
 					color = 'green';
-					diff = filesize(diff, true);
+					diff = prettyBytes(diff);
 				}
 
 				grunt.log.writetableln([12, 12, 55], [
-					_s.lpad(filesize(current, true), 10),
+					_s.lpad(prettyBytes(current), 10),
 					_s.lpad(chalk[color](diff ? '(' + diff + ')' : '(-)'), 10),
 					item.filename
 				]);

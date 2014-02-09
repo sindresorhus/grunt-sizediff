@@ -26,7 +26,8 @@
     "filesize": "~2.0.0",
     "async": "~0.2.9",
     "underscore.string": "~2.3.3",
-    "chalk": "~0.3.0"
+    "chalk": "~0.4.0",
+    "pretty-bytes": "~0.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.0"
