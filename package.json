@@ -22,18 +22,17 @@
     "url": "git://github.com/sindresorhus/grunt-sizediff.git"
   },
   "dependencies": {
-    "gzip-js": "~0.3.1",
-    "filesize": "~2.0.0",
-    "async": "~0.2.9",
-    "underscore.string": "~2.3.3",
-    "chalk": "~0.4.0",
-    "pretty-bytes": "~0.1.0"
+    "async": "^0.8.0",
+    "chalk": "^0.4.0",
+    "gzip-js": "^0.3.1",
+    "pretty-bytes": "^0.1.0",
+    "underscore.string": "^2.3.3"
   },
   "devDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": "^0.4.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": "^0.4.0"
   },
   "engines": {
     "node": ">=0.8.0"
