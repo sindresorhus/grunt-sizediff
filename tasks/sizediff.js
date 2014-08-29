@@ -46,6 +46,7 @@ module.exports = function (grunt) {
 
 			if (err) {
 				grunt.warn(err);
+				return;
 			}
 
 			console.log('\nPath %s', results[0].path.cyan);
