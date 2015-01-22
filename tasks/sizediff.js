@@ -3,7 +3,7 @@ var path = require('path');
 var gzipjs = require('gzip-js');
 var prettyBytes = require('pretty-bytes');
 var async = require('async');
-var _s = require('underscore.string');
+var lpad = require('lpad');
 var chalk = require('chalk');
 
 module.exports = function (grunt) {
@@ -76,8 +76,8 @@ module.exports = function (grunt) {
 				}
 
 				grunt.log.writetableln([12, 12, 55], [
-					_s.lpad(prettyBytes(current), 10),
-					_s.lpad(chalk[color](diff ? '(' + diff + ')' : '(-)'), 10),
+					lpad(prettyBytes(current), ' ', 10),
+					lpad(chalk[color](diff ? '(' + diff + ')' : '(-)'), ' ', 10),
 					item.filename
 				]);
 			});
