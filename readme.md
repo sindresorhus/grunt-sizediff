@@ -1,14 +1,14 @@
 # grunt-sizediff
 
-> Diff file sizes between current git branch and a branch/commit.  
+> Diff file sizes between current git branch and a branch/commit.<br>
 > Helps you keep an eye on your project size changes.
 
-![screenshot](screenshot.png)
+![](screenshot.png)
 
 
 ## Install
 
-```sh
+```
 $ npm install --save-dev grunt-sizediff
 ```
 
@@ -34,7 +34,6 @@ grunt.registerTask('default', ['sizediff']);
 
 You can specify two files to diff and an optional target. It falls back to `master` if `target` is not specified.
 
-
 #### Diff against a branch
 
 ```js
@@ -50,7 +49,6 @@ sizediff: {
 	}
 }
 ```
-
 
 #### Diff against a commit
 
@@ -68,6 +66,7 @@ sizediff: {
 }
 ```
 
+
 ## Override target
 
 You can temporarily override the diff target of a task by running `grunt sizediff:dist:target`, where `dist` is the task target you want to override and `target` is the branch or commit.
@@ -75,4 +74,4 @@ You can temporarily override the diff target of a task by running `grunt sizedif
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
