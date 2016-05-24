@@ -75,7 +75,7 @@ module.exports = function (grunt) {
 					diff = prettyBytes(diff);
 				}
 
-				grunt.log.writetableln([12, 12, 55], [
+				grunt.log.writetableln([12, 14, 55], [
 					lpad(prettyBytes(current), ' ', 10),
 					lpad(chalk[color](diff ? '(' + diff + ')' : '(-)'), ' ', 10),
 					item.filename
