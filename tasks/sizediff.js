@@ -65,7 +65,7 @@ module.exports = function (grunt) {
 				var current = item.current.length;
 				var target = item.target.length;
 				var diff = current - target;
-				var percent = ((diff / current) * 100).toFixed(2);
+				var percent = ((diff / current) * 100).toFixed();
 				var color = 'gray';
 
 				if (diff > 0) {
