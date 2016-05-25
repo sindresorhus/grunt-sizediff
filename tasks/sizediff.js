@@ -65,6 +65,7 @@ module.exports = function (grunt) {
 				var current = item.current.length;
 				var target = item.target.length;
 				var diff = current - target;
+				var percent = ((diff / current) * 100).toFixed();
 				var color = 'gray';
 
 				if (diff > 0) {
@@ -75,9 +76,9 @@ module.exports = function (grunt) {
 					diff = prettyBytes(diff);
 				}
 
-				grunt.log.writetableln([12, 12, 55], [
+				grunt.log.writetableln([12, 24, 55], [
 					lpad(prettyBytes(current), ' ', 10),
-					lpad(chalk[color](diff ? '(' + diff + ')' : '(-)'), ' ', 10),
+					lpad(chalk[color](diff ? '(' + diff + ', ' + percent + '%)' : '(-)'), ' ', 10),
 					item.filename
 				]);
 			});
